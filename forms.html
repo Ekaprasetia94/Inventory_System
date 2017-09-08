@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Inventory System</title>
+		<link rel="stylesheet" href="themes/Bootstrap.css">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ 
+	</head>
+	<body>
+		<div data-role="page" data-theme="a">
+			<div data-role="header" data-position="inline">
+				<h1>Inventory System</h1>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="index.html" data-icon="home">Home</a></li>
+					
+						<li><a href="listviews.html" data-icon="grid">Category</a></li>
+						<li><a href="nav.html" data-icon="search">Search</a></li>
+						<li><a href="forms.html" data-icon="gear" class="ui-btn-active">Input data</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="content" data-theme="a">
+
+				 
+
+				<h2>Forms</h2>
+
+				<form action="#" method="get">
+	<div data-role="fieldcontain">
+						<label for="name">Name:</label>
+						<input type="text" name="name" id="name" value=""  />
+					</div>
+
+					<div data-role="fieldcontain">
+						<label for="textarea">Description:</label>
+						<textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+					</div>
+
+					
+
+					
+					<div data-role="fieldcontain">
+						<label for="select-choice-a" class="select">Category:</label>
+						<select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+							<option>Select Category</option>
+							<option value="Category A">Category A</option>
+							<option value="Category B">Category B </option>
+							<option value="Category C">Category C</option>
+							<option value="Category D">Category D</option>
+						</select>
+					</div>
+
+					<div class="ui-body ui-body-b">
+						<fieldset class="ui-grid-a">
+							<div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div>
+							<div class="ui-block-b"><button type="submit" data-theme="a">Submit</button></div>
+					    </fieldset>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</body>
+</html>
