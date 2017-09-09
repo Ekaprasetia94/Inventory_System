@@ -7,8 +7,6 @@
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
 		<link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
-		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
 	</head>
 	<body>
 		<div data-role="page" data-theme="a">
@@ -25,24 +23,51 @@
 				</div>
 			</div>
 			<div data-role="content" data-theme="a">
-
-				 
-
 				<h2>List Category</h2>
-
-				<ul data-role="listview" data-inset="true" data-divider-theme="a">
+				<ul data-role="listview" data-inset="true" data-divider-theme="a" id="list-category">
 					<li data-role="list-divider">Category</li>
-					<li data-icon="gear"><a href="Category.html">Category A</a></li>
-					<li data-icon="gear"><a href="Category.html">Category B</a></li>
-					<li data-icon="gear"><a href="Category.html">Category C</a></li>
-					<li data-icon="gear"><a href="Category.html">Category D</a></li>
-					<li data-icon="gear"><a href="Category.html">Category E</a></li>
-					<li data-icon="gear"><a href="Category.html">Category F</a></li>
 				</ul>
-
-				
-
 			</div>
 		</div>
 	</body>
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+            console.log('Page ready');
+
+            var baseUrl = 'https://re-inventor.herokuapp.com/api/';
+            var categoriesUrl =  baseUrl + 'categories';
+			var listCategoryElem = $('#list-category');
+
+            loadCategories();
+
+		    function loadCategories() {
+		        console.log('loading categories');
+                $.ajax({
+                    url: categoriesUrl ,
+                    type: 'GET',
+                    cache: false,
+                    success: function(json) {
+                        if (json.categories) {
+                            console.log(json.categories.length);
+
+                            var html ='';
+                            $.each(json.categories, function(index, item) {
+                                html += '<li data-icon="gear"><a href="Category.html">' + item.name+ '</a></li>';
+                            });
+
+                            listCategoryElem.append($(html));
+                            listCategoryElem.trigger('create');
+                            listCategoryElem.listview('refresh');
+						}
+                    },
+                    error: function(xhr, desc, err) {
+                        alert(err);
+                        console.log(xhr + "\n" + err);
+                    }
+                });
+			}
+		});
+	</script>
 </html>
